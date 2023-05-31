@@ -1,8 +1,6 @@
-﻿using AdminPortal.API.DTOs;
+﻿namespace AdminPortal.API.DTOs;
 
-namespace AdminPortal.API.Models;
-
-public class Student
+public class StudentDto
 {
     public Guid Id { get; set; }
     public string FirstName { get; set; }
@@ -11,8 +9,7 @@ public class Student
     public string Email { get; set; }
     public long Mobile { get; set; }
     public string ProfileImageUrl { get; set; }
-
     public Guid GenderId { get; set; }
-    public Gender Gender { get; set; }
-    public Address Address { get; set; }
+    public GenderDto Gender { get; set; }
+    public AddressDto AddressDto { get; set; }
 }

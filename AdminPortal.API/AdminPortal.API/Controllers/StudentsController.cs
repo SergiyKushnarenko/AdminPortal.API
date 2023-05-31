@@ -1,3 +1,4 @@
+using AdminPortal.API.DTOs;
 using AdminPortal.API.Models;
 using AdminPortal.API.Repositories;
 using AutoMapper;
@@ -9,12 +10,12 @@ namespace AdminPortal.API.Controllers
     public class StudentsController : Controller
     {
         private readonly IStudentRepository _studentRepository;
-       // private readonly IMapper _mapper;
+        private readonly IMapper _mapper;
 
-        public StudentsController(IStudentRepository studentRepository)
+        public StudentsController(IStudentRepository studentRepository, IMapper mapper)
         {
             _studentRepository = studentRepository;
-           // _mapper = mapper;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -23,7 +24,7 @@ namespace AdminPortal.API.Controllers
         {
             var students = await _studentRepository.GetStudentsAsync();
 
-            return Ok(students);
+            return Ok(_mapper.Map<List<StudentDto>>(students));
         }
     }
 }
